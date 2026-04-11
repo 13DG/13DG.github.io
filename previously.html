@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Previously — Ben Graham</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #ffffff;
+      --text: #111111;
+      --mid: #555555;
+      --lt: #999999;
+      --rule: #e5e5e5;
+    }
+
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      font-size: 15px;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .wrap {
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    nav {
+      border-bottom: 1px solid var(--rule);
+      padding: 1.25rem 0;
+    }
+
+    nav .wrap {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+    }
+
+    .nav-home {
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: var(--text);
+      text-decoration: none;
+      letter-spacing: 0.02em;
+    }
+
+    .nav-home:hover { color: var(--mid); }
+
+    .nav-links {
+      display: flex;
+      gap: 1.75rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: 0.8rem;
+      color: var(--lt);
+      text-decoration: none;
+      transition: color 0.15s;
+    }
+
+    .nav-links a:hover { color: var(--text); }
+    .nav-links a.active { color: var(--text); }
+
+    .page-header {
+      padding: 4rem 0 3rem;
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .back {
+      display: inline-block;
+      font-size: 0.8rem;
+      color: var(--lt);
+      text-decoration: none;
+      margin-bottom: 1.5rem;
+      transition: color 0.15s;
+    }
+
+    .back:hover { color: var(--text); }
+
+    .page-header h1 {
+      font-family: 'Inter', system-ui, sans-serif;
+      font-size: clamp(2rem, 5vw, 3rem);
+      font-weight: 400;
+      line-height: 1.15;
+      letter-spacing: -0.01em;
+      margin-bottom: 1rem;
+    }
+
+    .page-header p {
+      font-size: 0.9625rem;
+      color: var(--mid);
+      max-width: 520px;
+      line-height: 1.8;
+    }
+
+    section {
+      padding: 3.5rem 0;
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .section-label {
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--lt);
+      margin-bottom: 2rem;
+    }
+
+    .work-list {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .work-item {
+      display: grid;
+      grid-template-columns: 140px 1fr;
+      gap: 0 2rem;
+      padding: 1.25rem 0;
+      border-top: 1px solid var(--rule);
+    }
+
+    .work-item:last-child {
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .work-period {
+      font-size: 0.8rem;
+      color: var(--lt);
+      padding-top: 0.1rem;
+      white-space: nowrap;
+    }
+
+    .work-right h3 {
+      font-size: 0.9375rem;
+      font-weight: 500;
+      color: var(--text);
+      margin-bottom: 0.2rem;
+    }
+
+    .work-right .work-org {
+      font-size: 0.85rem;
+      color: var(--mid);
+      margin-bottom: 0.5rem;
+    }
+
+    .work-right p {
+      font-size: 0.85rem;
+      color: var(--lt);
+      line-height: 1.65;
+    }
+
+    .contact-section {
+      padding: 3.5rem 0;
+    }
+
+    .contact-section p {
+      font-size: 0.9375rem;
+      color: var(--mid);
+      line-height: 1.75;
+      margin-bottom: 1.5rem;
+    }
+
+    .contact-links {
+      display: flex;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+    }
+
+    .contact-links a {
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: var(--text);
+      text-decoration: none;
+      border-bottom: 1px solid var(--rule);
+      padding-bottom: 1px;
+      transition: border-color 0.15s;
+    }
+
+    .contact-links a:hover { border-color: var(--text); }
+
+    footer {
+      padding: 1.5rem 0;
+      border-top: 1px solid var(--rule);
+    }
+
+    footer p { font-size: 0.75rem; color: var(--lt); }
+
+    @media (max-width: 540px) {
+      .work-item { grid-template-columns: 1fr; gap: 0.25rem; }
+      .contact-links { flex-direction: column; gap: 1rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div class="wrap">
+      <a class="nav-home" href="index.html">Ben Graham</a>
+      <ul class="nav-links">
+        <li><a href="app-dev.html">App Dev</a></li>
+        <li><a href="useless.html">Useless</a></li>
+        <li><a href="previously.html" class="active">Previously</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="page-header">
+    <div class="wrap">
+      <a class="back" href="index.html">← Back</a>
+      <h1>Previously</h1>
+      <p>
+        13 years at Apple as a Senior Systems Engineer in pre-sales, working across
+        education, healthcare, and enterprise. Before that, JAMF Software in just about
+        every capacity they'd let me. Before that, IT leadership at two ad agencies.
+      </p>
+    </div>
+  </div>
+
+  <section>
+    <div class="wrap">
+      <p class="section-label">Work history</p>
+      <div class="work-list">
+
+        <div class="work-item">
+          <span class="work-period">2012 – 2026</span>
+          <div class="work-right">
+            <h3>Senior Systems Engineer, Pre-Sales</h3>
+            <p class="work-org">Apple</p>
+            <p>
+              Technical pre-sales across education, healthcare, and enterprise.
+              Large-scale iPad deployments at University of Nevada Reno and Carrington College.
+              C-level AI and accessibility briefings. Healthcare accounts including UCSF and
+              UC Davis Health. Collaborated with Apple engineering on Auto-Advance for Mac.
+            </p>
+          </div>
+        </div>
+
+        <div class="work-item">
+          <span class="work-period">Prior to Apple</span>
+          <div class="work-right">
+            <h3>Consulting Engineer / PM / Account Management</h3>
+            <p class="work-org">JAMF Software</p>
+            <p>
+              Consulting engineering, product management, interface design,
+              account management, and direct sales.
+            </p>
+          </div>
+        </div>
+
+        <div class="work-item">
+          <span class="work-period">Earlier</span>
+          <div class="work-right">
+            <h3>IT Leadership</h3>
+            <p class="work-org">Leo Burnett &amp; Goodby Silverstein and Partners</p>
+            <p>
+              Technology leadership at two demanding creative agencies.
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <div class="contact-section">
+    <div class="wrap">
+      <p>
+        I'm actively looking for what's next. Pre-sales systems engineering or
+        solutions engineering and also open to other conversations.
+      </p>
+      <div class="contact-links">
+        <a href="mailto:beng@me.com">beng@me.com</a>
+        <a href="#">LinkedIn</a>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <div class="wrap">
+      <p>© 2026 Ben Graham</p>
+    </div>
+  </footer>
+
+</body>
+</html>

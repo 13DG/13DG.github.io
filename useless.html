@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Useless — Ben Graham</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #ffffff;
+      --text: #111111;
+      --mid: #555555;
+      --lt: #999999;
+      --rule: #e5e5e5;
+    }
+
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      font-size: 15px;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .wrap {
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    nav {
+      border-bottom: 1px solid var(--rule);
+      padding: 1.25rem 0;
+    }
+
+    nav .wrap {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+    }
+
+    .nav-home {
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: var(--text);
+      text-decoration: none;
+      letter-spacing: 0.02em;
+    }
+
+    .nav-home:hover { color: var(--mid); }
+
+    .nav-links {
+      display: flex;
+      gap: 1.75rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: 0.8rem;
+      color: var(--lt);
+      text-decoration: none;
+      transition: color 0.15s;
+    }
+
+    .nav-links a:hover { color: var(--text); }
+    .nav-links a.active { color: var(--text); }
+
+    .page-header {
+      padding: 4rem 0 3rem;
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .back {
+      display: inline-block;
+      font-size: 0.8rem;
+      color: var(--lt);
+      text-decoration: none;
+      margin-bottom: 1.5rem;
+      transition: color 0.15s;
+    }
+
+    .back:hover { color: var(--text); }
+
+    .page-header h1 {
+      font-family: 'Inter', system-ui, sans-serif;
+      font-size: clamp(2rem, 5vw, 3rem);
+      font-weight: 400;
+      line-height: 1.15;
+      letter-spacing: -0.01em;
+      margin-bottom: 1rem;
+    }
+
+    .page-header p {
+      font-size: 0.9625rem;
+      color: var(--mid);
+      max-width: 520px;
+      line-height: 1.8;
+      margin-bottom: 1em;
+    }
+
+    .page-header p:last-child { margin-bottom: 0; }
+
+    section {
+      padding: 3.5rem 0;
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .section-label {
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--lt);
+      margin-bottom: 2rem;
+    }
+
+    .project-list {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .project-item {
+      display: grid;
+      grid-template-columns: 120px 1fr;
+      gap: 0 2rem;
+      padding: 1.5rem 0;
+      border-top: 1px solid var(--rule);
+    }
+
+    .project-item:last-child {
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .project-type {
+      font-size: 0.775rem;
+      color: var(--lt);
+      padding-top: 0.15rem;
+    }
+
+    .project-right h3 {
+      font-size: 0.9375rem;
+      font-weight: 500;
+      color: var(--text);
+      margin-bottom: 0.5rem;
+    }
+
+    .project-right p {
+      font-size: 0.875rem;
+      color: var(--mid);
+      line-height: 1.75;
+      margin-bottom: 0.75em;
+    }
+
+    .project-right p:last-child { margin-bottom: 0; }
+
+    .project-right a {
+      display: inline-block;
+      font-size: 0.8rem;
+      color: var(--mid);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      text-decoration-color: var(--rule);
+      transition: color 0.15s, text-decoration-color 0.15s;
+    }
+
+    .project-right a:hover {
+      color: var(--text);
+      text-decoration-color: var(--text);
+    }
+
+    footer {
+      padding: 1.5rem 0;
+    }
+
+    footer p { font-size: 0.75rem; color: var(--lt); }
+
+    @media (max-width: 540px) {
+      .project-item { grid-template-columns: 1fr; gap: 0.25rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div class="wrap">
+      <a class="nav-home" href="index.html">Ben Graham</a>
+      <ul class="nav-links">
+        <li><a href="app-dev.html">App Dev</a></li>
+        <li><a href="useless.html" class="active">Useless</a></li>
+        <li><a href="previously.html">Previously</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="page-header">
+    <div class="wrap">
+      <a class="back" href="index.html">← Back</a>
+      <h1>Useless</h1>
+      <p>
+        My friend Nate and I have been meeting for Old Man Breakfast for years. It's a ritual
+        I inherited from my dad, who used to meet his friends for coffee at Booche's in
+        Columbia, Missouri before the bar opened for the day. We liked the idea enough to steal it.
+      </p>
+      <p>
+        A few years ago we started meeting on Tuesday nights for something we eventually
+        called Useless. The idea was to turn our philosophical conversations into actual
+        projects: deliberate, planned, committed, and of no practical use to anyone.
+      </p>
+    </div>
+  </div>
+
+  <section>
+    <div class="wrap">
+      <p class="section-label">Projects</p>
+      <div class="project-list">
+
+        <div class="project-item">
+          <span class="project-type">Book</span>
+          <div class="project-right">
+            <h3>Genesis: From Nothing to Something in 7 Days</h3>
+            <p>
+              Published 2025 by Puzzlegrass Press. Nate wrote it. I'm in it as Fox.
+              It documents seven Useless projects: part philosophical dialogue, part
+              Victorian naturalist expedition to an imaginary continent, part creation myth.
+              We started it in 2019 and worked on it for six years.
+            </p>
+          </div>
+        </div>
+
+        <div class="project-item">
+          <span class="project-type">Project</span>
+          <div class="project-right">
+            <h3>Your Biggest Fan</h3>
+            <p>
+              Nate and I were both in bands for a long time. We both know what it feels
+              like when someone in the crowd already knows your song, not just humming along
+              but actually knowing it. It's the best feeling you can have on a stage.
+              We wanted to give that to somebody.
+            </p>
+            <p>
+              We spent months finding the right band. Local, small, a song we could
+              actually learn. When we found them and found the song "Feel It," we memorized
+              every word. We recruited our friend Seth. We made t-shirts out of white
+              tees and black electrical tape: the song title, not the band name.
+              Wore them under overshirts.
+            </p>
+            <p>
+              When they started playing, we tore the overshirts off and screamed
+              every word along with the singer, line by line, for the whole song.
+            </p>
+            <p>
+              Then we left.
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="wrap">
+      <p>© 2026 Ben Graham</p>
+    </div>
+  </footer>
+
+</body>
+</html>

@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ben Graham</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #ffffff;
+      --text: #111111;
+      --mid: #555555;
+      --lt: #999999;
+      --rule: #e5e5e5;
+    }
+
+    html, body { height: 100%; }
+
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      font-size: 15px;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    .wrap {
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 0 2rem;
+      width: 100%;
+    }
+
+    /* ── Nav ── */
+    nav {
+      border-bottom: 1px solid var(--rule);
+      padding: 1.25rem 0;
+    }
+
+    nav .wrap {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+    }
+
+    .nav-name {
+      font-size: 0.875rem;
+      font-weight: 500;
+      letter-spacing: 0.02em;
+      color: var(--text);
+      text-decoration: none;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1.75rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: 0.8rem;
+      color: var(--lt);
+      text-decoration: none;
+      transition: color 0.15s;
+    }
+
+    .nav-links a:hover { color: var(--text); }
+
+    /* ── Main ── */
+    main {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 4rem 2rem;
+      max-width: 680px;
+      margin: 0 auto;
+      width: 100%;
+    }
+
+    h1 {
+      font-family: 'Inter', system-ui, sans-serif;
+      font-size: clamp(2.5rem, 6vw, 3.75rem);
+      font-weight: 400;
+      line-height: 1.1;
+      letter-spacing: -0.01em;
+      margin-bottom: 1.25rem;
+    }
+
+    .tagline {
+      font-size: 1rem;
+      color: var(--mid);
+    }
+
+    /* ── Footer ── */
+    footer {
+      padding: 1.5rem 0;
+      border-top: 1px solid var(--rule);
+    }
+
+    footer p {
+      font-size: 0.75rem;
+      color: var(--lt);
+    }
+
+    footer a { color: inherit; }
+
+    @media (max-width: 540px) {
+      .nav-links { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div class="wrap">
+      <a class="nav-name" href="#">Ben Graham</a>
+      <ul class="nav-links">
+        <li><a href="app-dev.html">App Dev</a></li>
+        <li><a href="useless.html">Useless</a></li>
+        <li><a href="previously.html">Previously</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main>
+    <h1>Ben Graham</h1>
+    <p class="tagline">All of my creative work lives here.</p>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <p>Bay Area, CA &nbsp;·&nbsp; <a href="mailto:beng@me.com">beng@me.com</a></p>
+    </div>
+  </footer>
+
+</body>
+</html>
