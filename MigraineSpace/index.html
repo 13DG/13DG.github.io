@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>App Development — Ben Graham</title>
+  <title>MigraineSpace — Support</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet" />
@@ -119,53 +119,45 @@
       margin-bottom: 2rem;
     }
 
-    .project-list {
-      display: flex;
-      flex-direction: column;
-    }
-
-    .project-item {
-      display: grid;
-      grid-template-columns: 120px 1fr;
-      gap: 0 2rem;
+    .support-block {
       padding: 1.5rem 0;
       border-top: 1px solid var(--rule);
     }
 
-    .project-item:last-child {
+    .support-block:last-child {
       border-bottom: 1px solid var(--rule);
     }
 
-    .project-type {
-      font-size: 0.775rem;
-      color: var(--lt);
-      padding-top: 0.15rem;
-    }
-
-    .project-right h3 {
+    .support-block h3 {
       font-size: 0.9375rem;
       font-weight: 500;
       color: var(--text);
       margin-bottom: 0.5rem;
     }
 
-    .project-right p {
+    .support-block p,
+    .support-block li {
       font-size: 0.875rem;
       color: var(--mid);
       line-height: 1.75;
-      margin-bottom: 0.75em;
     }
 
-    .project-right p:last-child { margin-bottom: 0; }
-
-    .project-link {
-      font-size: 0.775rem;
-      color: var(--lt);
-      text-decoration: none;
-      transition: color 0.15s;
+    .support-block ul {
+      padding-left: 1.1rem;
+      margin-top: 0.4rem;
     }
 
-    .project-link:hover { color: var(--text); }
+    .support-block li {
+      margin-bottom: 0.3rem;
+    }
+
+    a.inline-link {
+      color: var(--text);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+
+    a.inline-link:hover { color: var(--mid); }
 
     /* ── Footer ── */
     footer {
@@ -173,69 +165,58 @@
     }
 
     footer p { font-size: 0.75rem; color: var(--lt); }
-
-    @media (max-width: 540px) {
-      .project-item { grid-template-columns: 1fr; gap: 0.25rem; }
-    }
   </style>
 </head>
 <body>
 
   <nav>
     <div class="wrap">
-      <a class="nav-home" href="index.html">Ben Graham</a>
+      <a class="nav-home" href="https://13dg.org">Ben Graham</a>
       <ul class="nav-links">
-        <li><a href="app-dev.html" class="active">App Dev</a></li>
-        <li><a href="useless.html">Useless</a></li>
-        <li><a href="previously.html">Previously</a></li>
+        <li><a href="https://13dg.org/app-dev.html">App Dev</a></li>
+        <li><a href="https://13dg.org/useless.html">Useless</a></li>
+        <li><a href="https://13dg.org/previously.html">Previously</a></li>
       </ul>
     </div>
   </nav>
 
   <div class="page-header">
     <div class="wrap">
-      <a class="back" href="index.html">← Back</a>
-      <h1>App Development</h1>
-      <p>
-        For 13 years at Apple, any app I built on my own time would have become Apple's IP,
-        so I didn't build apps. I thought about building apps and accumulated a lot of ideas
-        with nowhere to put them. Getting laid off in early 2026 allowed me to finally work
-        on this stuff. It's been really fun to learn again.
-      </p>
+      <a class="back" href="https://13dg.org/app-dev.html">← App Dev</a>
+      <h1>MigraineSpace</h1>
+      <p>Support &amp; information for MigraineSpace on Apple Vision Pro.</p>
     </div>
   </div>
 
   <section>
     <div class="wrap">
-      <p class="section-label">Current</p>
-      <div class="project-list">
-
-        <div class="project-item">
-          <span class="project-type">iOS</span>
-          <div class="project-right">
-            <h3>FieldSense</h3>
-            <p>
-              FieldSense was the first thing I worked on when I had the time. I'd had the idea
-              for a while. I'm learning coding to build it and honestly the learning part has been the most fun.
-            </p>
-          </div>
-        </div>
-
-        <div class="project-item">
-          <span class="project-type">visionOS</span>
-          <div class="project-right">
-            <h3>MigrainSpace</h3>
-            <p>
-              MigrainSpace is for Apple Vision Pro. Migraines make screens painful and thinking hard,
-              so it's designed for exactly that moment. One tap puts you in a quiet, dark space with
-              ambient sound and optional breathing guidance. It also tracks your sessions so you can
-              spot patterns and share a summary with your doctor.
-            </p>
-            <a class="project-link" href="https://13dg.github.io/MigraineSpace/">Support →</a>
-          </div>
-        </div>
-
+      <p class="section-label">Contact</p>
+      <div class="support-block">
+        <h3>Get in touch</h3>
+        <p>Have a question, found a bug, or just want to say hi? Email me at <a class="inline-link" href="mailto:beng@me.com">beng@me.com</a> and I'll get back to you as soon as I can.</p>
       </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <p class="section-label">FAQ</p>
+
+      <div class="support-block">
+        <h3>Is my data private?</h3>
+        <p>Yes. All your data is stored locally on your device and is never shared with third parties.</p>
+      </div>
+
+      <div class="support-block">
+        <h3>How do I delete my data?</h3>
+        <p>You can delete all app data by uninstalling MigraineSpace from your device, or by using the reset option in Settings within the app.</p>
+      </div>
+
+      <div class="support-block">
+        <h3>I found a bug. What should I do?</h3>
+        <p>Please email <a class="inline-link" href="mailto:beng@me.com">beng@me.com</a> with a description of the issue along with your device model and visionOS version.</p>
+      </div>
+
     </div>
   </section>
 
