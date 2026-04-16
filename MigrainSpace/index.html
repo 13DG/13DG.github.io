@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MigrainSpace</title>
+  <meta name="description" content="A quiet, dark space for migraine moments. For Apple Vision Pro.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300&family=DM+Sans:ital,opsz,wght@0,9..40,200;0,9..40,300;0,9..40,400;1,9..40,200&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg: #f7f6f3;
+      --fg: #111110;
+      --mid: #6b6b67;
+      --faint: #e2e1dc;
+      --accent: #1a1a18;
+      --rule: #d4d3ce;
+      --mono: 'DM Mono', monospace;
+      --sans: 'DM Sans', sans-serif;
+    }
+    html { scroll-behavior: smooth; }
+    body { background: var(--bg); color: var(--fg); font-family: var(--sans); font-size: 16px; line-height: 1.6; -webkit-font-smoothing: antialiased; }
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 20px 48px; display: flex; justify-content: space-between; align-items: center; background: rgba(247, 246, 243, 0.88); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-bottom: 1px solid transparent; transition: border-color 0.3s; }
+    nav.scrolled { border-bottom-color: var(--rule); }
+    .nav-wordmark { font-family: var(--mono); font-size: 13px; font-weight: 400; letter-spacing: 0.08em; text-transform: uppercase; color: var(--fg); text-decoration: none; }
+    .nav-links { display: flex; gap: 32px; list-style: none; }
+    .nav-links a { font-family: var(--mono); font-size: 11px; font-weight: 400; letter-spacing: 0.1em; text-transform: uppercase; color: var(--mid); text-decoration: none; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--fg); }
+    .hero { min-height: 100vh; display: flex; flex-direction: column; justify-content: flex-end; padding: 0 48px 80px; padding-top: 120px; }
+    .hero-eyebrow { font-family: var(--mono); font-size: 11px; font-weight: 400; letter-spacing: 0.14em; text-transform: uppercase; color: var(--mid); margin-bottom: 28px; opacity: 0; animation: fadeUp 0.8s ease forwards 0.2s; }
+    .hero-headline { font-family: var(--sans); font-size: clamp(42px, 7vw, 96px); font-weight: 200; line-height: 1.05; letter-spacing: -0.02em; color: var(--fg); max-width: 16ch; opacity: 0; animation: fadeUp 0.9s ease forwards 0.35s; }
+    .hero-headline em { font-style: italic; font-weight: 200; color: var(--mid); }
+    .hero-sub { margin-top: 40px; font-size: 17px; font-weight: 300; color: var(--mid); max-width: 44ch; line-height: 1.65; opacity: 0; animation: fadeUp 0.9s ease forwards 0.5s; }
+    .hero-cta { margin-top: 48px; display: flex; align-items: center; gap: 32px; opacity: 0; animation: fadeUp 0.9s ease forwards 0.65s; }
+    .btn-primary { display: inline-flex; align-items: center; gap: 10px; background: var(--fg); color: var(--bg); font-family: var(--mono); font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; text-decoration: none; padding: 14px 28px; transition: opacity 0.2s; }
+    .btn-primary:hover { opacity: 0.75; }
+    .btn-secondary { font-family: var(--mono); font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--mid); text-decoration: none; border-bottom: 1px solid var(--rule); padding-bottom: 2px; transition: color 0.2s, border-color 0.2s; }
+    .btn-secondary:hover { color: var(--fg); border-color: var(--fg); }
+    .hero-divider { margin-top: 80px; height: 1px; background: var(--rule); opacity: 0; animation: fadeUp 0.9s ease forwards 0.8s; }
+    .ticker-wrap { overflow: hidden; padding: 20px 0; border-bottom: 1px solid var(--rule); background: var(--bg); }
+    .ticker { display: flex; gap: 0; animation: ticker 24s linear infinite; white-space: nowrap; }
+    .ticker-item { font-family: var(--mono); font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--mid); padding: 0 36px; border-right: 1px solid var(--rule); flex-shrink: 0; }
+    @keyframes ticker { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+    section { padding: 120px 48px; border-bottom: 1px solid var(--rule); }
+    .section-label { font-family: var(--mono); font-size: 11px; font-weight: 400; letter-spacing: 0.14em; text-transform: uppercase; color: var(--mid); margin-bottom: 64px; display: flex; align-items: center; gap: 16px; }
+    .section-label::after { content: ''; flex: 1; height: 1px; background: var(--rule); }
+    .intro-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; max-width: 1100px; }
+    .intro-headline { font-size: clamp(28px, 3.5vw, 44px); font-weight: 200; line-height: 1.2; letter-spacing: -0.015em; }
+    .intro-body { font-size: 16px; font-weight: 300; color: var(--mid); line-height: 1.8; }
+    .intro-body p + p { margin-top: 20px; }
+    .feature-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1px; background: var(--rule); margin-top: 0; }
+    .feature-card { background: var(--bg); padding: 36px 32px; transition: background 0.2s; }
+    .feature-card:hover { background: var(--faint); }
+    .feature-name { font-family: var(--mono); font-size: 12px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: var(--fg); margin-bottom: 10px; }
+    .feature-desc { font-size: 14px; font-weight: 300; color: var(--mid); line-height: 1.6; }
+    .specs-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--rule); }
+    .spec-block { background: var(--bg); padding: 48px 40px; }
+    .spec-title { font-family: var(--mono); font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--mid); margin-bottom: 24px; }
+    .spec-list { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+    .spec-list li { font-size: 14px; font-weight: 300; color: var(--fg); padding-left: 16px; position: relative; line-height: 1.5; }
+    .spec-list li::before { content: '—'; position: absolute; left: 0; color: var(--rule); font-family: var(--mono); }
+    .privacy-statement { max-width: 680px; }
+    .privacy-statement h2 { font-size: clamp(24px, 3vw, 38px); font-weight: 200; letter-spacing: -0.015em; line-height: 1.2; margin-bottom: 28px; }
+    .privacy-statement p { font-size: 16px; font-weight: 300; color: var(--mid); line-height: 1.8; }
+    .privacy-link { display: inline-block; margin-top: 28px; font-family: var(--mono); font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--fg); text-decoration: none; border-bottom: 1px solid var(--rule); padding-bottom: 2px; transition: border-color 0.2s; }
+    .privacy-link:hover { border-color: var(--fg); }
+    footer { padding: 40px 48px; display: flex; justify-content: space-between; align-items: center; }
+    .footer-wordmark { font-family: var(--mono); font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--mid); }
+    .footer-links { display: flex; gap: 32px; list-style: none; }
+    .footer-links a { font-family: var(--mono); font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--mid); text-decoration: none; transition: color 0.2s; }
+    .footer-links a:hover { color: var(--fg); }
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+    .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.7s ease, transform 0.7s ease; }
+    .reveal.visible { opacity: 1; transform: none; }
+    @media (max-width: 768px) {
+      nav { padding: 20px 24px; }
+      .hero { padding: 120px 24px 64px; }
+      section { padding: 80px 24px; }
+      .intro-grid { grid-template-columns: 1fr; gap: 40px; }
+      .specs-grid { grid-template-columns: 1fr; }
+      footer { padding: 32px 24px; flex-direction: column; gap: 24px; }
+      .nav-links { display: none; }
+    }
+  </style>
+</head>
+<body>
+  <nav id="nav">
+    <a href="/" class="nav-wordmark">MigrainSpace</a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#features">Features</a></li>
+      <li><a href="#privacy">Privacy</a></li>
+      <li><a href="privacy.html">Privacy Policy</a></li>
+    </ul>
+  </nav>
+
+  <div class="hero">
+    <p class="hero-eyebrow">For Apple Vision Pro</p>
+    <h1 class="hero-headline">Quiet. Dark.<br><em>Right now.</em></h1>
+    <p class="hero-sub">Migraines make screens painful and thinking hard. MigrainSpace is designed for exactly that moment — one tap puts you somewhere else.</p>
+    <div class="hero-cta">
+      <a href="#" class="btn-primary">
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 1L7 10M7 10L4 7M7 10L10 7" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/><path d="M2 13H12" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
+        Download on the App Store
+      </a>
+      <a href="#about" class="btn-secondary">Learn more</a>
+    </div>
+    <div class="hero-divider"></div>
+  </div>
+
+  <div class="ticker-wrap">
+    <div class="ticker">
+      <span class="ticker-item">Dark Environment</span><span class="ticker-item">Ambient Sound</span><span class="ticker-item">Breathing Guidance</span><span class="ticker-item">Session Tracking</span><span class="ticker-item">Pattern Recognition</span><span class="ticker-item">Doctor Summary</span><span class="ticker-item">One Tap</span><span class="ticker-item">No Accounts</span>
+      <span class="ticker-item">Dark Environment</span><span class="ticker-item">Ambient Sound</span><span class="ticker-item">Breathing Guidance</span><span class="ticker-item">Session Tracking</span><span class="ticker-item">Pattern Recognition</span><span class="ticker-item">Doctor Summary</span><span class="ticker-item">One Tap</span><span class="ticker-item">No Accounts</span>
+    </div>
+  </div>
+
+  <section id="about">
+    <div class="section-label">What it is</div>
+    <div class="intro-grid reveal">
+      <h2 class="intro-headline">Built for the moment when everything hurts.</h2>
+      <div class="intro-body">
+        <p>When a migraine hits, the last thing you want is a complicated interface. MigrainSpace puts a quiet, dark, immersive environment one tap away on Apple Vision Pro — with optional ambient sound and breathing guidance to help you through it.</p>
+        <p>It also tracks your sessions so you can spot patterns over time and share a clean summary with your doctor. No setup, no accounts, no friction.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="features" style="padding-top: 0; padding-bottom: 0; border-bottom: none;">
+    <div style="padding: 120px 48px 64px;"><div class="section-label">What you get</div></div>
+  </section>
+
+  <div class="feature-grid reveal">
+    <div class="feature-card"><div class="feature-name">Dark Space</div><div class="feature-desc">A fully immersive, low-light environment that replaces your surroundings. Gentle enough for light-sensitive moments.</div></div>
+    <div class="feature-card"><div class="feature-name">Ambient Sound</div><div class="feature-desc">Soft, looping audio designed to reduce sensory overload — rain, low drones, or silence. You choose.</div></div>
+    <div class="feature-card"><div class="feature-name">Breathing Guidance</div><div class="feature-desc">Optional slow breathing prompts to activate the parasympathetic response and reduce pain intensity.</div></div>
+    <div class="feature-card"><div class="feature-name">Session Tracking</div><div class="feature-desc">Every session is logged — duration, time of day, and intensity. No input required during an episode.</div></div>
+    <div class="feature-card"><div class="feature-name">Pattern Recognition</div><div class="feature-desc">See your migraine history over weeks and months. Spot triggers, frequencies, and durations at a glance.</div></div>
+    <div class="feature-card"><div class="feature-name">Doctor Summary</div><div class="feature-desc">Export a clean, readable summary of your session history to share at your next appointment.</div></div>
+  </div>
+
+  <section id="specs">
+    <div class="section-label">Details</div>
+    <div class="specs-grid reveal">
+      <div class="spec-block">
+        <div class="spec-title">During a Session</div>
+        <ul class="spec-list">
+          <li>One-tap entry from any context</li>
+          <li>Adjustable environment darkness</li>
+          <li>Ambient audio with volume control</li>
+          <li>Optional breathing guidance</li>
+          <li>Session auto-logged on exit</li>
+        </ul>
+      </div>
+      <div class="spec-block">
+        <div class="spec-title">History &amp; Tracking</div>
+        <ul class="spec-list">
+          <li>Full session log with timestamps</li>
+          <li>Duration and frequency trends</li>
+          <li>Weekly and monthly overviews</li>
+          <li>Exportable doctor summary (PDF)</li>
+          <li>iCloud sync across devices</li>
+        </ul>
+      </div>
+      <div class="spec-block">
+        <div class="spec-title">Privacy</div>
+        <ul class="spec-list">
+          <li>No accounts required</li>
+          <li>All data on-device or iCloud Drive</li>
+          <li>Nothing sent to any server</li>
+          <li>No analytics or tracking</li>
+          <li>You own everything you record</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="privacy">
+    <div class="section-label">Privacy</div>
+    <div class="privacy-statement reveal">
+      <h2>Your data goes nowhere.</h2>
+      <p>Everything MigrainSpace records stays on your device or in your personal iCloud Drive. No accounts. No servers. No telemetry. Your health information is yours.</p>
+      <a href="privacy.html" class="privacy-link">Read the full privacy policy →</a>
+    </div>
+  </section>
+
+  <footer>
+    <span class="footer-wordmark">MigrainSpace — 13dg.org</span>
+    <ul class="footer-links">
+      <li><a href="privacy.html">Privacy Policy</a></li>
+      <li><a href="mailto:app@13dg.org">Contact</a></li>
+    </ul>
+  </footer>
+
+  <script>
+    const nav = document.getElementById('nav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 40);
+    });
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -60px 0px' });
+    reveals.forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>
